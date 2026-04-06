@@ -63,7 +63,7 @@ export const App: React.FC = () => {
       );
 
       setSelectedTodoId(null);
-      setTitleToSet(''); // 💡 Оновити тут!
+      setTitleToSet('');
     } catch (err) {
       setError("Can't update todo");
     } finally {
