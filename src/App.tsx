@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { UserWarning } from './UserWarning';
+// eslint-disable-next-line max-len
+import { UserWarning } from '../../react_todo-app-loading-todos/src/UserWarning';
 import { createTodo, getTodos, updateTodos, USER_ID } from './api/todos';
 import { Todo } from './types/Todo';
 import { client } from './utils/fetchClient';
@@ -285,15 +286,20 @@ export const App: React.FC = () => {
                 completed: todo.completed,
               })}
             >
-              <label className="todo__status-label">
+              <label
+                className="todo__status-label"
+                htmlFor={`todo-status-${todo.id}`}
+                data-cy="TodoStatusLabel"
+              >
                 <input
+                  id={`todo-status-${todo.id}`}
                   data-cy="TodoStatus"
                   type="checkbox"
                   className="todo__status"
                   checked={todo.completed}
                   onChange={() => updateTodo(todo.id, !todo.completed)}
                 />
-                <span className="visually-hidden">Toggle todo</span>
+                <span>{'\u200C'}</span>
               </label>
 
               {selectedTodoId === todo.id ? (
